@@ -6,8 +6,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Route, Routes, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './Pages/home';
-import Login from './Pages/login';
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import Logout from './Pages/Logout';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               </NavDropdown.Item>
             </NavDropdown>
             <Link to={'/login'} className='nav-link'> Login</Link>
+            <Link to={'/logout'} className='nav-link'> Logout</Link>
           </Nav>
         </Navbar.Collapse>        
       </Container>
@@ -40,7 +42,9 @@ function App() {
     <div className='container'>
     <Routes>
       <Route path='/' element={<Home />}></Route>
+      <Route path='/home' element={<Home />}></Route>
       <Route path='/login' element={<Login />}></Route>
+      <Route path='/logout' element={<Logout />}></Route>
     </Routes>
     </div>
     </div>
