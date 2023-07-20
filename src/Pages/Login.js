@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 
-export default function Login() {
+export default function Login(props) {
   async function loginSubmit(e) {
     e.preventDefault();
     let postBody = {
@@ -31,6 +31,7 @@ export default function Login() {
             // show success alert message
             setShowSuccessMessage(true);
            localStorage.setItem("user-info", JSON.stringify(response.data));
+           props.sendLoginData(true);
            navigate("/home");
           } else {
             // show error alert message

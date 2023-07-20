@@ -9,8 +9,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Logout from './Pages/Logout';
+import React,{useState, useEffect} from 'react';
 
 function App() {
+
+  const [isLogin, setIsLogin] = useState(false);
+ 
+  const sendLoginData = (isLogin) => {
+    setIsLogin(isLogin)
+  }
+ 
+console.log('test',isLogin)
   return (
     <div>
     <Navbar bg="light" expand="lg">
@@ -33,8 +42,9 @@ function App() {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-            <Link to={'/login'} className='nav-link'> Login</Link>
-            <Link to={'/logout'} className='nav-link'> Logout</Link>
+
+            <Link to={'/login'} className={ isLogin == false ? 'nav-link' : 'nav-link d-none' }> Login</Link>
+            <Link to={'/logout'} className={ isLogin == false ? 'nav-link d-none' : 'nav-link' }> Logout</Link>
           </Nav>
         </Navbar.Collapse>        
       </Container>
@@ -43,7 +53,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />}></Route>
       <Route path='/home' element={<Home />}></Route>
-      <Route path='/login' element={<Login />}></Route>
+      <Route path='/login' element={<Login sendLoginData={sendLoginData}/>}></Route>
       <Route path='/logout' element={<Logout />}></Route>
     </Routes>
     </div>

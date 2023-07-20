@@ -8,7 +8,9 @@ import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 
 export default function Home() {
-  const [showLoginAlert, setShowLoginAlert] = useState(false);
+  
+  const [showLoginAlert, setShowLoginAlert] = useState(false);  
+  
   useEffect(() => {
     if (localStorage.getItem("user-info")) {
       setShowLoginAlert(true);
